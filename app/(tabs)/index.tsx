@@ -5,7 +5,7 @@ import Filme from './filme';
 const categorias = [
   {
     id: "1",
-    titulo: "Em Alta",
+    titulo: "Atual",
     filmes: [
       { id: "1a", titulo: "Oppenheimer", cor: "#1a1a2e", imagem:"https://mir-s3-cdn-cf.behance.net/project_modules/1400/5c3c44212930411.673d9fef7aad7.jpg" },
       { id: "1b", titulo: "Duna 2", cor: "#16213e", imagem:"https://mir-s3-cdn-cf.behance.net/project_modules/1400/5c3c44212930411.673d9fef7aad7.jpg"  },
@@ -75,7 +75,6 @@ function renderCategoria({item}:{item:any}){
       data={item.filmes}
       keyExtractor={filme=>filme.id}
       horizontal={true}
-      // showsHorizontalScrollIndicator={false}
       contentContainerStyle={{paddingBottom:40}}
       renderItem={({item})=>(
           <Image
