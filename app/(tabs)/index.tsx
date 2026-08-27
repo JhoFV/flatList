@@ -1,4 +1,5 @@
-import {View, StyleSheet, FlatList, Image} from 'react-native';
+import {View, StyleSheet, FlatList, Image, Pressable} from 'react-native';
+import {useRouter} from 'expo-router';
 
 const categorias = [
   {
@@ -53,19 +54,21 @@ const categorias = [
 
 
 export default function App() {
+  const router = useRouter();
+
     return (
         <View style={styles.corFundo}>
             <FlatList
                         data={categorias}
                         keyExtractor={item => item.id}
-                        renderItem={renderCategoria}
+            renderItem={({item}) => renderCategoria(item, () => router.push('/filme'))}
                     />
         </View>
     );
 }
  
  
-function renderCategoria({item}:{item:any}){
+function renderCategoria(item:any, onFilmePress: () => void){
   return(
     <View style={styles.categorias}>
     {item.titulo}
@@ -75,12 +78,12 @@ function renderCategoria({item}:{item:any}){
       horizontal={true}
       contentContainerStyle={{paddingBottom:40}}
       renderItem={({item})=>(
-          <Image
-          source={{uri:item.imagem}}
-          style={[styles.filme]}
-          >        
-              
-          </Image>
+          <Pressable onPress={onFilmePress}>
+            <Image
+            source={{uri:item.imagem}}
+            style={[styles.filme]}
+            />
+          </Pressable>
         )}
       > </FlatList>
      
