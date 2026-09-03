@@ -49,6 +49,19 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="filmes"
+        options={{
+          title: "Filmes",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? "film" : "film-outline"}
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="explore"
         options={{
           title: "Explorar",
